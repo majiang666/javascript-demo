@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>构造函数</title>
+	<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+	<h1 id="title"></h1>
+	<p id="info"></p>
+	<p id="price"></p>
+	<p><button id="btn">加入购物车</button></p>
+	<script>
+		window.onload = function(){
+			var title = document.getElementById("title");
+			var info = document.getElementById("info");
+			var price = document.getElementById("price");
+			var btn = document.getElementById("btn");
+
+			var Product = function(title,info,price){
+				this.title = title;
+				this.info = info;
+				this.price = price;
+			};
+			Product.prototype={
+				cart:function(){
+					alert("已经加入购物车");
+				}
+			};
+			// Product.prototype.cart= function(){
+			// 	alert("已经加入购物车");
+			// };
+			var bean = {
+				"a":"iphone7 Plus",
+				"b":"iPhone 7是Apple（苹果公司）第10代手机",
+				"c":"$300.00"
+			};
+			// console.log(bean.a);
+			var products = new Product(bean.a,bean.b,bean.c);
+			
+			// products.title = "iphone7 Plus";
+			// products.info = "iPhone 7是Apple（苹果公司）第10代手机";
+			// products.price = "$300.00";
+
+			title.innerHTML = products.title;
+			info.innerHTML = products.info;
+			price.innerHTML = products.price;
+
+			btn.onclick = function(){
+				products.cart();
+			};
+		};
+		
+	</script>
+</body>
+</html>
