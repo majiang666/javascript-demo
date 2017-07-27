@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#top{
+			height:50px;
+			background: #f00;
+			color: #fff;
+			text-align: center;
+			line-height: 50px;
+		}
+		#banner img{
+			width:100%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="top">{{ message }}</div>
+	<div id="banner">
+		<ul>
+			<li v-for="item in imgName"><img v-bind:src="item.name"></li>
+		</ul>
+	</div>
+	
+	<div id="alert">
+		<p>{{message}}</p>
+		<button v-on:click="alertMessage">点击查看效果</button>
+	</div>
+
+
+	<script>
+		window.onload=function(){
+			var top = new Vue({
+				el:"#top",
+				data:{
+					message:"头部"
+				}
+			});
+			var banner = new Vue({
+				el:"#banner",
+				data:{
+					imgName:[
+						{name:"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=32c015eaf6039245b5b8e94ceffdceb7/d788d43f8794a4c28c10040c04f41bd5ad6e39e2.jpg"},
+						{name:"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=fa0e7a2bbb3533fae1bb9b6dc0ba976a/838ba61ea8d3fd1fa2e2511f3a4e251f95ca5f28.jpg"},
+						{name:"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=9909ddc1b91c8701c2bbbaa54f16f45a/a08b87d6277f9e2fb0727e2d1530e924b899f354.jpg"}
+					]
+				}
+			});
+			var alert = new Vue({
+				el:"#alert",
+				data:{
+					message:"Hello,World!"
+				},
+				methods:{
+					alertMessage:function(){
+						this.message = "1234567890";
+						console.log(this.message);
+					}
+				}
+			});
+		};
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="https://cdn.bootcss.com/vue/2.4.1/vue.js"></script>
+</body>
+</html>

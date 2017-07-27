@@ -1,0 +1,135 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body {
+    line-height:1;
+}
+
+:focus {
+	outline: 1;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    text-decoration: none;
+    color:#666;
+}
+li{
+    list-style: none;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+@fontWeight:normal;
+
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+.colorList(@colorItme){
+    color:@colorItme;
+}
+.fontDpr(@fontSize){
+    font-size:@fontSize;
+    &[data-dpr="2"]{
+        font-size:@fontSize * 2;
+    }
+    &[data-dpr="3"]{
+        font-size:@fontSize * 3;
+    }
+}
+
+header{
+    height:1.2rem;
+    background: #00b7e9;
+    position: fixed;
+    top:0;
+    right:0;
+    left:0;
+    width:100%;
+    line-height: 1.2rem;
+    h1{
+        .fontDpr(16px);
+        text-align: center;
+        .colorList(#fff);
+        font-weight: @fontWeight;
+    }
+}
+
+.newsList{
+    margin-top:1.2rem;
+    li{
+        height:0.67rem;
+        line-height: 0.67rem;
+        border-bottom:dashed 1px #dedede; 
+        padding:0 0.13rem;
+        .fontDpr(12px);
+        .colorList(#666);  
+        &.bgbg{
+            background: #ccc;
+        }
+    }
+}
+
+.info{
+    padding:0.27rem;
+    overflow:hidden;
+    p{
+       .fontDpr(14px); 
+       .colorList(#333);
+       border:dotted 1px #dedede;
+       border-radius: 4px;
+       padding:20px;
+       line-height: 22px;
+    }
+}
+
+.photo{
+    li{
+        width:33.3%;
+        float: left;
+        height:1.6rem;
+        padding:0 10px;
+        box-sizing: border-box;
+        img{
+            width:100%; 
+        }
+    }
+}
+
+.people{
+    padding:0.13rem;
+    box-sizing: border-box;
+    li{
+        width:25%;
+        float:left;
+        border:solid 1px #dedede;
+        margin-left:10px;
+        margin-top:10px;
+        p{
+            line-height: 0.27rem;
+            padding:0.13rem;
+            span{
+                display: inline-block;
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>整体练习</title>
+	<link rel="stylesheet" href="assets/less/style.css">
+</head>
+<body>
+	<!-- 头部 -->
+	<header>
+		<h1 id="headerTitle"></h1>
+	</header>
+	
+	<!-- 新闻 -->
+	<div class="newsList">
+		<ul id="new_ul">
+			<script id="t_tpl" type="text/x-handlebars-template">
+					{{#each news}}
+						{{#if-bg @index}}
+							<li class="bgbg">
+							{{else}}
+							<li>
+						{{/if-bg}}
+						<a href="#">{{newsName}}</a></li>
+					{{/each}}
+			</script>
+		</ul>
+	</div>
+
+	<!-- 文章 -->
+	<div class="info clearfix">
+		<p>当然这只是针对于描述性的文本，比如说段落文本。但有的时候文本的字号也需要分场景的，比如在项目中有一个slogan,业务方希望这个slogan能根据不同的终端适配。针对这样的场景，完全可以使用rem给slogan做计量单位。</p>
+	</div>
+
+	<!-- 图片 -->
+	<div class="photo">
+		<ul id="photo">
+			<script id="p_tpl" type="text/x-handlebars-template">
+				{{#each img}}
+					<li><img src="{{imgList}}" alt=""></li>
+				{{/each}}
+			</script>
+		</ul>
+	</div>
+
+	<!-- 人员 -->
+	<div class="people" id="people">
+		<script id="people_tpl" type="text/x-handlebars-template">
+			<ul>
+				{{#each info}}
+					<li>
+						<p><span>姓名</span>:<span>{{name}}</span></p>
+						<p><span>性别</span>:<span>{{sex}}</span></p>
+						<p><span>时间</span>:<span>{{time}}</span></p>
+						<p><span>婚否</span>:<span>
+						{{#if-weihun this}}
+							<em style="color:#f00;">{{marry}}</em>
+							{{else}}
+							{{marry}}
+						{{/if-weihun}}
+						</span></p>
+					</li>
+				{{/each}}
+			</ul>
+		</script>
+	</div>
+
+
+
+
+
+
+
+	<script src="assets/js/flexible.js"></script>
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/handlebars.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
