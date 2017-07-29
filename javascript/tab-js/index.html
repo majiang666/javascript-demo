@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+	<div class="title" id="title">
+		<ul>
+			<li class="cur">a</li>
+			<li>b</li>
+			<li>c</li>
+		</ul>
+	</div>
+	<div class="main" id="main">
+		<div class="item active">1</div> 
+		<div class="item">2</div>
+		<div class="item">3</div>
+	</div>
+	<script>
+		window.onload = function(){
+			var mt = document.getElementById("title").getElementsByTagName("li");
+			var mb = document.getElementById("main").getElementsByClassName("item");
+			for(var i=0;i<mt.length;i++){
+				mt[i].index = i;
+				mt[i].onclick = function(){
+					for(var j=0;j<mt.length;j++){
+						mt[j].className = "";
+						mb[j].className = "item";
+					}
+					this.className = "cur";
+					mb[this.index].className = "item active";
+				}
+			}
+		}
+	</script>
+</body>
+</html>
