@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>京东轮播</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+		}
+		.box{
+			margin:100px auto;
+			overflow: hidden;
+			width:790px;
+			height: 340px;
+			position:relative;
+		}
+		.circle{
+			position: absolute;
+			bottom:0px;
+			left:0;
+			right:0;
+			margin:0 auto;
+		}
+		.circle span{
+			width:18px;
+			height:18px;
+			background: #f00;
+			color: #fff;
+			text-align: center;
+			line-height: 18px;
+			float: left;
+			margin-left:10px;
+			border-radius: 50%;
+		}
+		.circle span.cur{
+			background: #fff;
+			color: #f00;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="scroll">
+		<div class="slider">
+			<ul id="imgList">
+				<li><img src="https://img30.360buyimg.com/da/jfs/t5887/302/8400103991/87679/663a2377/59798312Nf32a0b99.jpg" alt=""></li>
+				<li><img src="https://img30.360buyimg.com/da/jfs/t5887/302/8400103991/87679/663a2377/59798312Nf32a0b99.jpg" alt=""></li>
+				<li><img src="https://img30.360buyimg.com/da/jfs/t6073/342/6954797912/129172/cd6b7ea5/59793c59Nbabde990.jpg" alt=""></li>
+				<li><img src="https://img10.360buyimg.com/da/jfs/t5722/187/8218595441/51117/6f3d50fb/5979adaaNcd966c54.jpg" alt=""></li>
+				<li><img src="https://img12.360buyimg.com/da/jfs/t5578/164/8362607055/92576/637c1cef/597a9aa6N5681d86f.jpg" alt=""></li>
+
+			</ul>
+		</div>
+	</div>
+	<script>
+		window.onload = function(){
+			function $(id){
+				return document.getElementById(id);
+			}
+			var scroll = $("scroll");
+			var divNode = document.createElement("div");
+			//divNode.className = "circle";
+			divNode.setAttribute("class","circle");
+			scroll.appendChild(divNode);
+			var ul = $("imgList");
+			var lis = ul.children;
+			for(var i = 0;i<lis.length;i++){
+				var spans = document.createElement("span");
+				//spans[0].style.className = "cur";
+				spans.innerHTML = i+1;
+				divNode.appendChild(spans);
+			}
+			var child = divNode.children;
+			child[0].setAttribute("class","cur");
+			
+		}
+	</script>
+</body>
+</html>
