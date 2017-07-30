@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>className</title>
+</head>
+<body>
+	<div>1</div>
+	<div class="test">2</div>
+	<div class="demo">3</div>
+	<div class="test demo">4</div>
+	<div clas="demo test">5</div>
+	<script>
+	window.onload = function(){
+
+		function getClass(className){
+			// 如果浏览器支持getElementsByClassName直接执行
+			if(document.getElementsByClassName){
+				return document.getElementsByClassName(className);
+			}
+			// 如果不支持getElementsByClassName执行下边自己定义的
+			var arr = [];//用于存放返回的数组
+			var dom = document.getElementsByTagName("*");
+			for(var i = 0;i < dom.length;i++){
+				var txtArr = dom[i].className.split(" ");
+				for(var j = 0;j < txtArr.length;j++){
+					if(txtArr[j] == className){
+						arr.push(dom[i]);
+					}
+				}
+			}
+			return arr;
+		}
+		console.log(getClass("test"));
+	}
+	</script>
+</body>
+</html>
