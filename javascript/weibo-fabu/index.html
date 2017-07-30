@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微博发布</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		#box{
+			margin:100px auto;
+			width:500px;
+			border:solid 1px #f00;
+			padding:20px;
+		}
+		#box ul li{
+			border-bottom:dotted 1px #000;
+			line-height: 30px;
+		} 
+		#box ul li em{
+			float:right;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		说说：
+		<textarea name="" id="" cols="30" rows="10"></textarea>
+		<button>发布</button>
+		
+	</div>
+	<script>
+	window.onload = function(){
+		var textarea = document.getElementsByTagName("textarea")[0];
+		var btn = document.getElementsByTagName("button")[0];
+		var ul = document.createElement("ul");
+		btn.parentNode.appendChild(ul);
+		btn.onclick = function(){
+			if(textarea.value == ""){
+				alert("内容不能为空！");
+				return false;
+			}
+			var lis = document.createElement("li");
+			lis.innerHTML = textarea.value + "<em>删除</em>";
+			textarea.value = "";
+			var lili = ul.children;
+			if(lili.length == 0){
+				ul.appendChild(lis);
+			}else{
+				ul.insertBefore(lis,lili[0]);
+			}
+
+			var dels = document.getElementsByTagName("em");
+			console.log(dels);
+			for(var i = 0; i<dels.length;i++){
+				dels[i].onclick = function(){
+					ul.removeChild(this.parentNode);
+				}
+			}
+		}
+	}
+	</script>
+</body>
+</html>
