@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date</title>
+</head>
+<body>
+	<div id="box">
+		<p></p>
+		<span></span>
+	</div>
+	<script>
+	window.onload = function(){
+		var near = document.getElementById("box");
+		var p = near.getElementsByTagName("p");
+		var span = near.getElementsByTagName("span");
+
+		var date = new Date();
+		var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+		p[0].innerHTML = date.getFullYear() + "-" + (date.getMonth()+1 + "-" + date.getDate() + " " + arr[date.getDay()]);
+		span[0].innerHTML = date.getDate();
+	}
+	</script>
+</body>
+</html>
