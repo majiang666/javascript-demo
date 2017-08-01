@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>短信倒计时</title>
+</head>
+<body>
+    <input type="text">
+    <button id="btn">点击发送短信</button>
+
+    <script>
+        window.onload = function(){
+
+            var btn = document.getElementById("btn");
+            var con = 5;
+            var timer = null;
+            btn.onclick = function(){
+                var _this = this;
+                _this.disabled = true;
+                clearInterval(timer);
+                timer = setInterval(sendMessage,1000);
+                function sendMessage(){
+                    con--;
+                    if(con >= 0){
+                        _this.innerHTML = "还剩余" + con + "秒";
+                    }else{
+                        _this.innerHTML = "重新发送短信";
+                        _this.disabled = false;
+                        clearInterval(timer);
+                        con = 5;
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>
