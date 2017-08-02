@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>长图上下滚动</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img{
+            border:0;
+            vertical-align: middle;
+        }
+        .demo{
+            width:261px;
+            height:200px;
+            border:solid 1px #f00;
+            overflow: hidden;
+            margin:50px auto;
+            position: relative;
+        }
+        .demo img{
+            width:100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .demo span{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            height: 100px;
+            cursor: pointer;
+        }
+        #picUp{
+            top:0;
+        }
+        #picDown{
+            bottom:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <img src="../assets/img/changtu.jpg" alt="" id="pic">
+        <span id="picUp"></span>
+        <span id="picDown"></span>
+    </div>
+</body>
+</html>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    var count = 0;
+    var timer = null;
+
+    $("picUp").onmouseover = function(){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            count -= 3;
+            if(count >= -836){
+                    $("pic").style.top = count + "px";
+            }else{
+                clearInterval(timer);
+            }
+
+        },30);
+    }
+
+    $("picDown").onmouseover = function(){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            count++;
+            if(count < 0){
+                $("pic").style.top = count + "px";
+            }else{
+                clearInterval(timer);
+            }
+        },30);
+    }
+
+</script>
