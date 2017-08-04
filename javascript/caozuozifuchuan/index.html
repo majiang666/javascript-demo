@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作字符串</title>
+    <script>
+        window.onload = function(){
+            var div1 = document.getElementById("div1").innerHTML;
+            var div2 = document.getElementById("div2").innerHTML;
+            function getHtml(id,txt){
+                document.getElementById(id).onclick = function(){
+                    this.nextSibling.innerHTML = txt;
+                }
+            }
+            getHtml("btn",div1.concat(div2));
+            console.log(div1.concat(div2));
+        }
+
+    </script>
+</head>
+<body>
+    <div id="div1">几点回家收到货付款及时反馈就是快点发货客服</div>
+    <div id="div2">1234567890</div>
+    <button id="btn">连接</button><p></p>
+</body>
+</html>

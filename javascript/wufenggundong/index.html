@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img{
+            border:0;
+            vertical-align: top;
+        }
+        li{
+            list-style: none;
+        }
+        #demo{
+            width:400px;
+            height:100px;
+            border:solid 1px #f00;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #demo ul li{
+            float: left;
+        }
+        #scroll{
+            width:400%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <ul id="scroll">
+        <li><img src="../assets/img/1.jpg" alt=""></li>
+        <li><img src="../assets/img/2.jpg" alt=""></li>
+        <li><img src="../assets/img/3.jpg" alt=""></li>
+        <li><img src="../assets/img/4.jpg" alt=""></li>
+        <li><img src="../assets/img/1.jpg" alt=""></li>
+        <li><img src="../assets/img/2.jpg" alt=""></li>
+    </ul>
+</div>
+<script>
+    var demo = document.getElementById("demo");
+    var scroll = document.getElementById("scroll");
+    var timer = null;
+    var num = 0;
+    timer = setInterval(autoPlay,30);
+    function autoPlay(){
+        num--;
+        num >= -800 ? num : num = 0;
+        scroll.style.left = num + "px";
+//        if(num >= -800){
+//            scroll.style.left = num + "px";
+//        }else{
+//            scroll.style.left = 0;
+//            num = 0;
+//        }
+        scroll.onmouseover = function(){
+            clearInterval(timer);
+        }
+        scroll.onmouseout = function(){
+            timer = setInterval(autoPlay,30);
+        }
+
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
