@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offsetLeft</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background: #ccc;
+        }
+        li{
+            list-style: none;
+        }
+        #nav{
+            width:1000px;
+            height:40px;
+            background: #fff;
+            margin:100px auto;
+            border-radius: 4px;
+            position: relative;
+        }
+        #cloud{
+            width:100px;
+            height:40px;
+            background: #f00;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+        }
+        #nav ul{
+            position: relative;
+            z-index: 1;
+        }
+        #nav ul li{
+            float: left;
+            width:100px;
+            height:40px;
+            text-align: center;
+            line-height: 40px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <span id="cloud"></span>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var nav = document.getElementById("nav");
+    var cloud = document.getElementById("cloud");
+    var lis = nav.children[1].children;
+    var leader = 0;
+    var target = 0;
+    var cur = 0;
+    for(var i = 0; i<lis.length;i++){
+        lis[i].onmouseover = function(){
+            target = this.offsetLeft;
+        }
+        lis[i].onmouseout = function(){
+            target = cur;
+        }
+        lis[i].onclick = function(){
+            cur = this.offsetLeft;
+        }
+    }
+    setInterval(function(){
+        leader = leader + (target - leader) / 10;
+        cloud.style.left = leader + "px";
+    },10);
+</script>

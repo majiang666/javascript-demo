@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左右轮播图</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ol{
+            list-style:none;
+        }
+        .slider{
+            width: 200px;
+            height: 100px;
+            border:solid 1px #333;
+            padding:5px;
+            margin:100px auto;
+            position: relative;
+        }
+        .slider .inner{
+            width:100%;
+            height:100%;
+            background: #ccc;
+            position: relative;
+            overflow: hidden;
+        }
+        .slider .inner ul{
+            width:1000%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .slider .inner ul li{
+            float: left;
+        }
+        #jiantou{
+            display: none;
+        }
+        #jiantou span{
+            display: block;
+            background: #f00;
+            color: #fff;
+        }
+        #jiantou span#left{
+            position: absolute;
+            left:5px;
+            top:50px;
+        }
+        #jiantou span#right{
+            position: absolute;
+            right:5px;
+            top:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider" id="jd">
+        <div class="inner">
+            <ul id="imgs">
+                <li><img src="../assets/img/1.jpg" alt=""></li>
+                <li><img src="../assets/img/2.jpg" alt=""></li>
+                <li><img src="../assets/img/3.jpg" alt=""></li>
+                <li><img src="../assets/img/4.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div id="jiantou">
+            <span id="left">左</span>
+            <span id="right">右</span>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var jd = document.getElementById("jd");
+    var jiantou = document.getElementById("jiantou");
+    var imgs = document.getElementById("imgs");
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    jd.onmouseover = function(){
+        jiantou.style.display = "block";
+    }
+    jd.onmouseout = function(){
+        jiantou.style.display = "none";
+    }
+    left.onclick = function(){
+        target += 200;
+    }
+    right.onclick = function(){
+        target -= 200;
+    }
+    var leader = 0;
+    var target = 0;
+    setInterval(function(){
+        if(target >=0){
+            target = 0;
+        }else if(target <= -600){
+            target = -600;
+        }
+        leader = leader + (target - leader) / 10;
+        imgs.style.left = leader + "px";
+    },20)
+
+</script>

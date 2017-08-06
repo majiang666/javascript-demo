@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标跟随</title>
+    <style>
+        #imgs{
+            width:50px;
+            height:50px;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<img src="../assets/img/iphone.png" alt="" id="imgs">
+</body>
+</html>
+<script>
+    var imgs = document.getElementById("imgs");
+    document.onclick = function(event){
+        var event = event || window.event;
+        targetX = event.clientX - imgs.offsetWidth / 2;
+        targetY = event.clientY - imgs.offsetHeight / 2;
+        console.log(imgs.offsetWidth);
+        console.log(imgs.offsetHeight);
+    }
+    var leaderX=0,leaderY = 0,targetX = 0,targetY = 0;
+    setInterval(function(){
+        leaderX = leaderX + (targetX - leaderX) / 10;
+        leaderY = leaderY + (targetY - leaderY) / 10;
+        imgs.style.left = leaderX + "px";
+        imgs.style.top = leaderY + "px";
+    },10);
+</script>

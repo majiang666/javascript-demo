@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标经过大图</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .demo{
+            width:450px;
+            height:450px;
+            border:solid 1px #dedede;
+            margin:100px 100px;
+            position: relative;
+        }
+        .small{
+            width:450px;
+            height:450px;
+        }
+        .big{
+            width:550px;
+            height:550px;
+            position: absolute;
+            top:0;
+            left:470px;
+            border:solid 1px #f00;
+            overflow: hidden;
+            display: none;
+        }
+        .big img{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .mask{
+            width:100px;
+            height:100px;
+            background: rgba(255,255,0,0.4);
+            position: absolute;
+            top:0;
+            left:0;
+            cursor: move;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo" id="demo">
+        <div class="small" id="small">
+            <img src="../assets/img/small.jpg" alt="">
+            <div class="mask" id="mask"></div>
+        </div>
+        <div class="big" id="big"><img src="../assets/img/big.jpg" alt=""></div>
+    </div>
+</body>
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    var small = document.getElementById("small");
+    var big = document.getElementById("big");
+    var mask = document.getElementById("mask");
+
+    small.onmouseover = function(){
+        big.style.display = "block";
+        mask.style.display = "block";
+    }
+    small.onmouseout = function(){
+        big.style.display = "none";
+        mask.style.display = "none";
+    }
+    var x = 0;
+    var y = 0;
+    small.onmousemove = function(event){
+        var event = event || window.event;
+        x = event.clientX - demo.offsetLeft - mask.offsetWidth / 2;
+        y = event.clientY - demo.offsetTop - mask.offsetHeight / 2;
+        if(x < 0){
+            x = 0;
+        }else if(x > small.offsetWidth - mask.offsetWidth){
+            x = small.offsetWidth - mask.offsetWidth;
+        }
+        if(y < 0){
+            y = 0;
+        }else if(y > small.offsetHeight - mask.offsetHeight){
+            y = small.offsetHeight - mask.offsetHeight;
+        }
+        mask.style.left = x + "px";
+        mask.style.top = y + "px";
+
+        big.children[0].style.left = -x * big.offsetWidth / small.offsetWidth + "px";
+        big.children[0].style.top = -y * big.offsetHeight / small.offsetHeight + "px";
+
+    }
+</script>
