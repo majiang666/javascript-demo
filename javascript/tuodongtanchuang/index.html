@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖动弹窗</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #demo{
+            width:300px;
+            height: 300px;
+            position: fixed;
+            top:50%;
+            left:50%;
+            margin-left:-150px;
+            margin-top:-150px;
+            border:solid 1px #dedede;
+        }
+        #title{
+            height:30px;
+            line-height: 30px;
+            background: #f00;
+            color: #fff;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <div id="title">标题</div>
+    <div id="mean">内容</div>
+</div>
+</body>
+</html>
+<script>
+    var demo = document.getElementById("demo");
+    var title = document.getElementById("title");
+    function moveWindow(leader,traget){
+        leader.onmousedown = function(event){
+            var event = event || window.event;
+            var x = event.clientX - traget.offsetLeft - 150;
+            var y = event.clientY - traget.offsetTop -150;
+            document.onmousemove = function(event){
+                var event = event || window.event;
+                traget.style.left = event.clientX - x + "px";
+                traget.style.top = event.clientY - y + "px";
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();//防止拖动选中文字
+            }
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        }
+    }
+    moveWindow(title,demo);
+</script>
