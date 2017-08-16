@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图整体</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        .box{
+            width:200px;
+            height:100px;
+            border:solid 2px #dedede;
+            margin:100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .scroll{
+            position: relative;
+        }
+        .scroll ul{
+            width:600%;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .scroll ul li{
+            float: left;
+        }
+        #ol{
+            position: absolute;
+            bottom:5px;
+            right:0;
+        }
+        #ol li{
+            width:18px;
+            height:18px;
+            background: #ccc;
+            text-align: center;
+            line-height: 18px;
+            color: #000;
+            float: left;
+            margin-right:5px;
+        }
+        #ol li.cur{
+            background: #f60;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="scroll">
+        <ul id="ul">
+            <li><img src="../assets/img/1.jpg" alt=""></li>
+            <li><img src="../assets/img/2.jpg" alt=""></li>
+            <li><img src="../assets/img/3.jpg" alt=""></li>
+            <li><img src="../assets/img/4.jpg" alt=""></li>
+        </ul>
+    </div>
+    <ol id="ol">
+
+    </ol>
+</div>
+<script>
+    //方法封装
+    function animate(obj,target){//传递参数 obj要做动画的对象，target要运动的目标位置
+        var speed = obj.offsetLeft < target ? 5 : -5;//判断步长往前走还是往后走
+        obj.timer = setInterval(function(){
+            var result = target - obj.offsetLeft;//用target目标位置减去obj对象
+            obj.style.left = obj.offsetLeft + speed + "px";//赋值给obj对象
+            if(Math.abs(result) <= 5){//判断用target目标位置减去obj对象，检查是否走完（相减或者相加）
+                clearInterval(obj.timer);//如果走完清楚定时器
+                obj.style.left = target + "px";//因为最后会有差值，所以直接赋值目标距离target
+            }
+        },30);
+    }
+
+    window.onload = function(){
+        var box = document.getElementById("box");
+        var ul = box.children[0].children[0];
+        var ulLis = ul.children;
+        var ol = document.getElementById("ol");
+        ul.appendChild(ul.children[0].cloneNode(true));
+
+        for(var i = 0; i<ulLis.length -1;i++){
+            var li = document.createElement("li");
+            li.innerHTML = i+1;
+            ol.appendChild(li);
+            ol.children[0].className = "cur";
+        }
+
+        //动画部分
+        var olLis = ol.children;
+        for(var i = 0;i<olLis.length;i++){
+            olLis.index = i;
+            olLis[i].onmouseover = function(){
+                for(var j = 0;j<olLis.length;j++){
+                    olLis[j].className = "";
+                }
+                this.className = "cur";
+                animate(ul,-this.index*200);
+            }
+        }
+
+        // 添加定时器
+        var timer = null;
+        var key =0;
+        timer = setInterval(autoplay,1000);
+        function autoplay(){
+            key++;
+            if(key>ulLis.length -1){
+                ul.style.left = 0;
+                key = 1;
+            }
+            animate(ul,-key*200);
+        }
+
+
+
+
+    }
+</script>
+</body>
+</html>
