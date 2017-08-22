@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=0" />
+	<title>搜索</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		input{
+			outline: none;
+		}
+		li{
+			list-style: none;
+		}
+		div{
+			box-sizing: border-box;
+		}
+		.box{
+			position: relative;
+			width:100%;
+		}
+		.ipt{
+			height:30px;
+			border:solid 1px #dedede;
+			position: relative;
+			z-index: 2;
+		}
+		.search-hot{
+			width:100%;
+			background: #f5f5f5;
+			position: absolute;
+			top:32px;
+			left:0;
+			right:0;
+			padding:20px;
+			display: none;
+			z-index: 1;
+		}
+		.search-hot ul li{
+			float: left;
+			background: #fff;
+			border-radius: 15px;
+			padding:5px;
+			font-size:12px;
+			margin-right:5px;
+			margin-bottom:5px;
+		}
+		.s-btn{
+			width:52px;
+			height:32px;
+			padding:0 10px;
+			background: #ccc;
+			border:0;
+			vertical-align: middle;
+			position: relative;
+			z-index: 2;
+		}
+		.search-bt{
+			width:100%;
+		}
+		.search-bt input{
+			width:-moz-calc(80% - 2px); 
+			width:-webkit-calc(80% - 2px); 
+			width: calc(80% - 2px);
+			float: left;
+		}
+		.search-bt button{
+			float: left;
+			width:20%;
+		}
+		@keyframes bounceInDown {
+		  from, 60%, 75%, 90%, to {
+		    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		  }
+
+		  0% {
+		    opacity: 0.8;
+		    transform: translate3d(0, -32px, 0);
+		  }
+
+		  90% {
+		    opacity: 1;
+		    transform: translate3d(0, 0px, 0);
+		  }
+
+		  to {
+		    transform: none;
+		  }
+		}
+
+		.bounceInDown {
+		  animation-name: bounceInDown;
+		  animation-duration: 0.35s;
+  		  animation-fill-mode: both;
+		}
+
+		.demo{
+			margin:200px 0 0 500px;
+			clear: both;
+			position: relative;
+			width:50px;
+		}
+		.s-btn{
+			width:50px;
+			height:50px;
+			background: #ccc;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 5px;
+			font-size:12px;
+		}
+		.s-search{
+			width:0px;
+			height:50px;
+			position: absolute;
+			right:50px;
+			top:0;
+			background: #f5f5f5;
+			border:0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="search-bt">
+			<input type="text" class="ipt" id="ipt" placeholder="请输入关键词">
+			<button class="s-btn">搜索</button>
+		</div>
+		<div class="search-hot">
+			<ul>
+				<li><a href="#">手机</a></li>
+				<li><a href="#">配件</a></li>
+				<li><a href="#">小米手机</a></li>
+				<li><a href="#">华为</a></li>
+				<li><a href="#">iphone6 plus</a></li>
+				<li><a href="#">iphone6 plus</a></li>
+				<li><a href="#">手机</a></li>
+				<li><a href="#">配件</a></li>
+				<li><a href="#">小米手机</a></li>
+				<li><a href="#">华为</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<script src="jquery.2.1.4.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		var input = $("#ipt");
+		input.blur(function(){
+			$(".search-hot").hide();
+		});
+		input.focus(function(){
+			$(".search-hot").show();
+			$(".search-hot").addClass("bounceInDown");
+		});
+	});
+	</script>
+</body>
+</html>
