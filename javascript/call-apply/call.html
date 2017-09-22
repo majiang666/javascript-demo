@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	function Fun1(name){
+		this.name = name;
+		this.showName = function(){
+			console.log(this.name);
+		}
+	}
+
+	function Fun2(name){
+		Fun1.call(this,name);
+	}
+
+	var demo = new Fun2("majiang");
+	demo.showName();
+
+
+
+
+	// var test1 = new Fun1();
+	// var test2 = new Fun2();
+
+	// test1.showName.call(test2,'');
+	//test1.showName.apply(test2,[])
+
+
+</script>

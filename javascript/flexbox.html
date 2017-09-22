@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flexbox</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.box{
+			display: flex;
+			width: 500px;
+			height:500px;
+			background: #f00;
+			/*flex-direction: row;
+			flex-wrap:wrap-reverse;*/
+			flex-flow:row wrap;
+			/*justify-content:space-around;*/
+			/*align-items:stretch ;*/
+			align-content:stretch ;
+			order: 0;
+		}
+		.child{
+			width:50px;
+			height:50px;
+			background: #ff0;
+			margin-left:5px;
+			margin-top:5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span class="child">-1</span>
+		<span class="child">0</span>
+		<span class="child" style="order:-1;flex-grow:0.2">2</span>
+		<span class="child">1</span>
+		<span class="child">3</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+        canvas { 
+        	border: 1px solid black; 
+        	margin:50px;
+        	/*background: #ccc;*/
+        }
+	</style>
+</head>
+<body onload="draw()">
+	<canvas id="demo" width="300" height="300"></canvas>
+
+	<script>
+	function draw(){
+		//fillRect(x, y, width, height)绘制一个填充的矩形
+		//strokeRect(x, y, width, height)绘制一个矩形的边框
+		//clearRect(x, y, width, height)清除指定矩形区域，让清除部分完全透明
+		var demo = document.getElementById("demo");
+
+		if(demo.getContext){
+			var ctx = demo.getContext("2d");
+
+			var img = new Image();
+			img.onload = function(){
+				ctx.drawImage(img,0,0,100,100);
+			}
+			img.src = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png';
+
+
+
+
+
+			// ctx.font = "40px ''";
+			// ctx.strokeText("马江",20,20);
+			// ctx.fillText("马江",40,40);
+
+
+			// var p1 = new Path2D();
+			// p1.rect(0,0,100,100);
+
+			// var p2 = new Path2D();
+			// p2.rect(100,100,100,100);
+
+			// ctx.stroke(p1);
+			// ctx.fill(p2);
+
+			// ctx.beginPath();
+			// ctx.rect(20,20,100,50);
+			// ctx.stroke();
+
+
+			//ctx.beginPath();
+
+			// ctx.moveTo(30,30);
+			// ctx.bezierCurveTo(40,15,70,15,60,30);
+			// ctx.bezierCurveTo(50,30,40,40,60,60);
+
+			// ctx.moveTo(10,10);
+			// ctx.quadraticCurveTo(15,5,20,10);
+			// ctx.quadraticCurveTo(25,35,40,10);
+
+
+
+			//ctx.stroke();
+
+
+
+
+
+
+
+
+			// ctx.beginPath();
+			// ctx.arc(20,20,20,0.5*Math.PI,0,true);
+			// ctx.stroke();
+
+
+
+
+
+
+
+			// ctx.beginPath();
+			// ctx.moveTo(10,10);
+			// ctx.lineTo(100,10);
+			// ctx.lineTo(10,100);
+			// ctx.lineTo(10,10);//或者ctx.closePath(); 来闭合
+			// ctx.stroke();
+
+			// //绘制白色半圆的代码如下： 
+			// ctx.beginPath(); 
+			// ctx.arc(200,200,80,1.5*Math.PI,Math.PI/2,false); 
+			// ctx.fillStyle="white"; 
+			// ctx.closePath(); 
+			// ctx.fill(); 
+
+			// //绘制黑色半圆的代码如下： 
+			// ctx.beginPath(); 
+			// ctx.arc(200,200,80,Math.PI/2,1.5*Math.PI,false); 
+			// ctx.fillStyle="black"; 
+			// ctx.closePath(); 
+			// ctx.fill(); 
+
+			// //绘制黑色小圆 
+			// ctx.beginPath(); 
+			// ctx.arc(200,240,40,0,Math.PI*2,true); 
+			// ctx.fillStyle="black"; 
+			// ctx.closePath(); 
+			// ctx.fill(); 
+
+			// //绘制白色小圆 
+			// ctx.beginPath(); 
+			// ctx.arc(200,160,40,0,Math.PI*2,true); 
+			// ctx.fillStyle="white"; 
+			// ctx.closePath(); 
+			// ctx.fill(); 
+
+			// //绘制白色小圆心 
+			// ctx.beginPath(); 
+			// ctx.arc(200,160,5,0,Math.PI*2,true); 
+			// ctx.fillStyle="black"; 
+			// ctx.closePath(); 
+			// ctx.fill(); 
+			 
+			// //绘制黑色小圆心 
+			// ctx.beginPath(); 
+			// ctx.arc(200,240,5,0,Math.PI*2,true); 
+			// ctx.fillStyle="white"; 
+			// ctx.closePath(); 
+			// ctx.fill(); 
+
+
+
+
+
+
+
+			// ctx.beginPath();
+			// ctx.arc(10,10,10,0,5,false);
+			// ctx.stroke();
+
+			// ctx.beginPath();
+			// ctx.moveTo(75,50);
+		 //    ctx.lineTo(100,75);
+		 //    ctx.lineTo(100,25);
+		 //    ctx.fill();
+
+
+
+
+
+
+
+
+
+
+
+			// ctx.fillRect(25,25,100,100);
+		 //    ctx.clearRect(45,45,60,60);
+		 //    ctx.strokeRect(50,50,50,50);
+
+			// ctx.fillStyle = "#ff0";
+			// ctx.fillRect (10,10,30,30);
+
+			// ctx.fillStyle = "#000";
+			// ctx.fillRect (20,20,30,30);
+
+		}
+
+	}
+		
+	</script>
+</body>
+</html>
